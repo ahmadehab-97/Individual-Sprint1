@@ -31,4 +31,4 @@ var productSchema = mongoose.Schema({
     },
 });
 
-mongoose.model('Anas', productSchema);
+mongoose.model('Ehab', productSchema);

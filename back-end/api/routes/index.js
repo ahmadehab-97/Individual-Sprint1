@@ -1,6 +1,6 @@
 var express = require('express'),
   router = express.Router(),
-  productCtrl = require('../controllers/AnasController');
+  productCtrl = require('../controllers/EhabController');
 
   const authentication = require('../controllers/authentication')(router);
   app = express();
@@ -8,15 +8,15 @@ var express = require('express'),
 
 
 //-------------------------------Product Routes-----------------------------------
-router.get('/anas/getProducts', productCtrl.getProducts);
-router.get('/anas/getProduct/:productId', productCtrl.getProduct);
+router.get('/ehab/getProducts', productCtrl.getProducts);
+router.get('/ehab/getProduct/:productId', productCtrl.getProduct);
 router.get(
-  '/anas/getProductsBelowPrice/:price',
+  '/ehab/getProductsBelowPrice/:price',
   productCtrl.getProductsBelowPrice
 );
-router.post('/anas/createProduct', productCtrl.createProduct);
-router.patch('/anas/updateProduct/:productId', productCtrl.updateProduct);
-router.delete('/anas/deleteProduct/:productId', productCtrl.deleteProduct);
+router.post('/ehab/createProduct', productCtrl.createProduct);
+router.patch('/ehab/updateProduct/:productId', productCtrl.updateProduct);
+router.delete('/ehab/deleteProduct/:productId', productCtrl.deleteProduct);
 
 
 app.use('/authentication' , authentication);

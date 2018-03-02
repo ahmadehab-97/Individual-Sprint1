@@ -14,7 +14,7 @@ import { Component, OnInit, trigger, state, style, transition, animate } from '@
                     <img src="https://drive.google.com/uc?id=1fhZnz3V14vUcpUy2-wyfD6Rs0db74PEN" style="margin:auto; width:200px;height: 200px;display:block" />
                 </div>
                 <div class="tp-box__side tp-box__back">
-                    <font size="2">Anas Mahmoud</font>
+                    <font size="2">Ehab Mahmoud</font>
                     <br/>
                     <font size="2">Engineer in Progress</font>
                 </div>

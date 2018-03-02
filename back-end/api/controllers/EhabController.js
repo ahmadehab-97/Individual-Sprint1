@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     moment = require('moment'),
     Validations = require('../utils/Validations'),
-    Anas = mongoose.model('Anas');
+    Ehab = mongoose.model('Ehab');
 
 module.exports.getProduct = function(req, res, next) {
     if (!Validations.isObjectId(req.params.productId)) {
@@ -11,11 +11,11 @@ module.exports.getProduct = function(req, res, next) {
             data: null
         });
     }
-    Anas.findById(req.params.productId).exec(function(err, Anas) {
+    Ehab.findById(req.params.productId).exec(function(err, Ehab) {
         if (err) {
             return next(err);
         }
-        if (!Anas) {
+        if (!Ehab) {
             return res
                 .status(404)
                 .json({ err: null, msg: 'Product not found.', data: null });
@@ -23,20 +23,20 @@ module.exports.getProduct = function(req, res, next) {
         res.status(200).json({
             err: null,
             msg: 'Product retrieved successfully.',
-            data: Anas
+            data: Ehab
         });
     });
 };
 
 module.exports.getProducts = function(req, res, next) {
-    Anas.find({}).exec(function(err, Anas) {
+    Ehab.find({}).exec(function(err, Ehab) {
         if (err) {
             return next(err);
         }
         res.status(200).json({
             err: null,
             msg: 'Products retrieved successfully.',
-            data: Anas
+            data: Ehab
         });
     });
 };
@@ -49,11 +49,11 @@ module.exports.getProductsBelowPrice = function(req, res, next) {
             data: null
         });
     }
-    Anas.find({
+    Ehab.find({
         price: {
             $lt: req.params.price
         }
-    }).exec(function(err, Anas) {
+    }).exec(function(err, Ehab) {
         if (err) {
             return next(err);
         }
@@ -63,7 +63,7 @@ module.exports.getProductsBelowPrice = function(req, res, next) {
             'Products priced below ' +
             req.params.price +
             ' retrieved successfully.',
-            data: Anas
+            data: Ehab
         });
     });
 };
@@ -85,14 +85,14 @@ module.exports.createProduct = function(req, res, next) {
     delete req.body.createdAt;
     delete req.body.updatedAt;
 
-    Anas.create(req.body, function(err, Anas) {
+    Ehab.create(req.body, function(err, Ehab) {
         if (err) {
             return next(err);
         }
         res.status(201).json({
             err: null,
             msg: 'Product was created successfully.',
-            data: Anas
+            data: Ehab
         });
     });
 };
@@ -121,7 +121,7 @@ module.exports.updateProduct = function(req, res, next) {
     delete req.body.createdAt;
     req.body.updatedAt = moment().toDate();
 
-    Anas.findByIdAndUpdate(
+    Ehab.findByIdAndUpdate(
         req.params.productId,
         {
             $set: req.body
@@ -152,7 +152,7 @@ module.exports.deleteProduct = function(req, res, next) {
             data: null
         });
     }
-    Anas.findByIdAndRemove(req.params.productId).exec(function(
+    Ehab.findByIdAndRemove(req.params.productId).exec(function(
         err,
         deletedProduct
     ) {
